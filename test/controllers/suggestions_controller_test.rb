@@ -1,18 +1,17 @@
 require 'test_helper'
 
 class SuggestionsControllerTest < ActionController::TestCase
-  test "should get new" do
-    get :new
-    assert_response :success
+
+  def setup
+    @suggestion = suggestions(:one)
   end
 
-  test "should get show" do
-    get :show
-    assert_response :success
+  def teardown
+    @suggestion = nil
   end
 
-  test "should get index" do
-    get :index
+  test "should show suggestion" do
+    get :show, id: @suggestion.id
     assert_response :success
   end
 

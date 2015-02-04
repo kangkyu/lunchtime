@@ -1,4 +1,5 @@
 class SuggestionsController < ApplicationController
+  before_action :set_suggestion, only: [:show, :destroy]
 
   def index
     @suggestions = Suggestion.all
@@ -12,9 +13,9 @@ class SuggestionsController < ApplicationController
   def create
     @suggestion = Suggestion.new(suggestion_params)
     if @suggestion.save
-    redirect_to suggestions_path
+      redirect_to suggestions_path
     else
-    render 'new'
+      render 'new'
     end
   end
 
@@ -31,6 +32,10 @@ class SuggestionsController < ApplicationController
   private
 
     def suggestion_params
-      params.require(:suggestion).permit(:name, :user_id, :user_name)
+      params.require(:suggestion).permit(:name)
+    end
+
+    def set_suggestion
+      @suggestion = Suggestion.find(params[:id])
     end
 end

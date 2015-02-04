@@ -1,2 +1,14 @@
-<h1>Suggestions#show</h1>
-<p>Find me in app/views/suggestions/show.html.erb</p>
+<div class="container">
+  <div>
+    <div>
+      <h1><%= @suggestion.name %></h1>
+    </div>
+    <div>
+      <h2>created at <%= time_ago_in_words(@suggestion.created_at) %> ago</h2>
+      <h2>updated at <%= time_ago_in_words(@suggestion.updated_at) %> ago</h2>
+    </div>
+  </div>
+  <div>
+    <h2><%= link_to "Back", suggestions_url, class: "btn btn-link" %></h2>
+  </div>
+</div>
